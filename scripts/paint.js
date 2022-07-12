@@ -21,3 +21,10 @@ export const Paint = () => {
 	html += '</select>';
 	return html;
 };
+export const findPaint = (id) => {
+	for (const paint of paints) {
+		if (id === paint.id) {
+			return paint.color;
+		}
+	}
+};

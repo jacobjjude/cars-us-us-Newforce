@@ -19,3 +19,11 @@ export const Wheels = () => {
 	html += '</select>';
 	return html;
 };
+
+export const findWheels = (id) => {
+	for (const wheel of wheels) {
+		if (id === wheel.id) {
+			return wheel.style;
+		}
+	}
+};

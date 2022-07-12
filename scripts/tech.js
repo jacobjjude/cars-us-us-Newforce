@@ -21,3 +21,11 @@ export const Technologies = () => {
 	html += '</select>';
 	return html;
 };
+
+export const findTech = (id) => {
+	for (const tech of techs) {
+		if (id === tech.id) {
+			return tech.package;
+		}
+	}
+};

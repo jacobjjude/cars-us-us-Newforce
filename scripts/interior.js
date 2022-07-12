@@ -19,3 +19,12 @@ export const Interior = () => {
 	html += '</select>';
 	return html;
 };
+
+//finds interior based off of id, returns name
+export const findInterior = (id) => {
+	for (const int of interior) {
+		if (id === int.id) {
+			return int.color;
+		}
+	}
+};

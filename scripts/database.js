@@ -64,7 +64,7 @@ const database = {
 		{ id: 4, style: '18-inch Pair Spoke Black' }
 	],
 	orderBuilder: {},
-	customOrders: [ {} ]
+	customOrders: []
 };
 export const getPaint = () => {
 	return database.paint.map((item) => ({ ...item }));

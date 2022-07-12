@@ -1,13 +1,30 @@
 import { getOrders } from './database.js';
+import { findInterior } from './interior.js';
+import { findPaint } from './paint.js';
+import { findTech } from './tech.js';
+import { findWheels } from './wheels.js';
 
 const buildOrderListItem = (order) => {
-    return `<li>
-    Order ${order.id}: 
-    </li>`
-}
+	const chosenInt = findInterior(order.interiorId);
+	const chosenPaint = findPaint(order.paintId);
+	const chosenTech = findTech(order.techId);
+	const chosenWheel = findWheels(order.wheelId);
+
+	return `<li>
+    Order #${order.id}: You chose the ${chosenPaint} color car with ${chosenInt} interior, ${chosenWheel} wheels, and ${chosenTech} package
+    </li>`;
+};
 
 export const Orders = () => {
-    const order = getOrders();
+	const order = getOrders();
 
-    return 'IT WORKED!!!'
+	if (order.length === 0) {
+		return '';
+	} else {
+		let html = '<ul>';
+		const listItems = order.map(buildOrderListItem);
+		html += listItems.join('');
+		html += '</ul>';
+		return html;
+	}
 };
