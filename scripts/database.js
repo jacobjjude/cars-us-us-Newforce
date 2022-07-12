@@ -104,23 +104,30 @@ export const setPaint = (id) => {
 
 let primaryKey = 1;
 export const addCustomOrder = () => {
-	// Copy the current state of user choices
-	const newOrder = { ...database.orderBuilder };
+	if (
+		database.orderBuilder.wheelId &&
+		database.orderBuilder.paintId &&
+		database.orderBuilder.interiorId &&
+		database.orderBuilder.techId
+	) {
+		// Copy the current state of user choices
+		const newOrder = { ...database.orderBuilder };
+		debugger;
+		// Add a new primary key to the object
+		newOrder.id = primaryKey;
 
-	// Add a new primary key to the object
-	newOrder.id = primaryKey;
+		// Add a timestamp to the order
+		newOrder.timestamp = Date.now();
 
-	// Add a timestamp to the order
-	newOrder.timestamp = Date.now();
+		// Add the new order object to custom orders state
+		database.customOrders.push(newOrder);
 
-	// Add the new order object to custom orders state
-	database.customOrders.push(newOrder);
+		// Reset the temporary state for user choices
+		database.orderBuilder = {};
 
-	// Reset the temporary state for user choices
-	database.orderBuilder = {};
-
-	// Broadcast a notification that permanent state has changed
-	document.dispatchEvent(new CustomEvent('stateChanged'));
-	primaryKey++;
-	console.log(database.customOrders);
+		// Broadcast a notification that permanent state has changed
+		document.dispatchEvent(new CustomEvent('stateChanged'));
+		primaryKey++;
+		console.log(database.customOrders);
+	} 
 };
