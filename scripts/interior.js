@@ -24,7 +24,7 @@ export const Interior = () => {
 export const findInterior = (id) => {
 	for (const int of interior) {
 		if (id === int.id) {
-			return int.color;
+			return int;
 		}
 	}
 };

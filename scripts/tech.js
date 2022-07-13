@@ -25,7 +25,7 @@ export const Technologies = () => {
 export const findTech = (id) => {
 	for (const tech of techs) {
 		if (id === tech.id) {
-			return tech.package;
+			return tech;
 		}
 	}
 };

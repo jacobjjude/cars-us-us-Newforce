@@ -2,66 +2,78 @@ const database = {
 	paint: [
 		{
 			id: 1,
-			color: 'Silver'
+			color: 'Silver',
+			price: 500
 		},
 		{
 			id: 2,
-			color: 'Midnight Blue'
+			color: 'Midnight Blue',
+			price: 500
 		},
 		{
 			id: 3,
-			color: 'Firebrick Red'
+			color: 'Firebrick Red',
+			price: 500
 		},
 		{
 			id: 4,
-			color: 'Spring Green'
+			color: 'Spring Green',
+			price: 500
 		}
 	],
 	interior: [
 		{
 			id: 1,
-			color: 'Beige Fabric'
+			color: 'Beige Fabric',
+			price: 1
 		},
 		{
 			id: 2,
-			color: 'Charcoal Fabric'
+			color: 'Charcoal Fabric',
+			price: 600
 		},
 		{
 			id: 3,
-			color: 'White Leather'
+			color: 'White Leather',
+			price: 784
 		},
 		{
 			id: 4,
-			color: 'Black Leather'
+			color: 'Black Leather',
+			price: 651
 		}
 	],
 	technology: [
 		{
 			id: 1,
 			package: 'Basic Package',
-			description: 'basic sound system'
+			description: 'basic sound system',
+			price: 210
 		},
 		{
 			id: 2,
 			package: 'Navigation Package',
-			description: 'includes integrated navigation controls'
+			description: 'includes integrated navigation controls',
+			price: 351
 		},
 		{
 			id: 3,
 			package: 'Visibility Package',
-			description: 'includes side and rear cameras'
+			description: 'includes side and rear cameras',
+			price: 486
 		},
 		{
 			id: 4,
 			package: 'Ultra Package',
-			description: 'include navigation and visibility packages'
+			description: 'include navigation and visibility packages',
+			price: 569
 		}
 	],
 	wheels: [
-		{ id: 1, style: '17-inch Pair Radial' },
-		{ id: 2, style: '17-inch Pair Radial Black' },
-		{ id: 3, style: '18-inch Pair Spoke Silver' },
-		{ id: 4, style: '18-inch Pair Spoke Black' }
+		{ id: 1, style: '17-inch Pair Radial', price: 251 },
+		{ id: 2, style: '17-inch Pair Radial Black', price: 357 },
+		{ id: 3, style: '18-inch Pair Spoke Silver', price: 456 },
+		{ id: 4, style: '18-inch Pair Spoke Black', price: 987 }
 	],
 	orderBuilder: {},
 	customOrders: []
@@ -112,7 +124,7 @@ export const addCustomOrder = () => {
 	) {
 		// Copy the current state of user choices
 		const newOrder = { ...database.orderBuilder };
-		debugger;
+
 		// Add a new primary key to the object
 		newOrder.id = primaryKey;
 
@@ -129,5 +141,5 @@ export const addCustomOrder = () => {
 		document.dispatchEvent(new CustomEvent('stateChanged'));
 		primaryKey++;
 		console.log(database.customOrders);
-	} 
+	}
 };

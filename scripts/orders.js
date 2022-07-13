@@ -9,10 +9,14 @@ const buildOrderListItem = (order) => {
 	const chosenPaint = findPaint(order.paintId);
 	const chosenTech = findTech(order.techId);
 	const chosenWheel = findWheels(order.wheelId);
+	const totalPrice = chosenInt.price + chosenPaint.price + chosenTech.price + chosenWheel.price;
+	const priceOutput = totalPrice.toLocaleString('en-US', {
+		style: 'currency',
+		currency: 'USD'
+	});
 
 	return `<li>
-    Order #${order.id}: You chose the ${chosenPaint} color car with ${chosenInt} interior, ${chosenWheel} wheels, and ${chosenTech} package
-    </li>`;
+    Order #${order.id}: You chose the ${chosenPaint.color} color car with ${chosenInt.color} interior, ${chosenWheel.style} wheels, and the ${chosenTech.package}</li><li>Your total price is ${priceOutput}</li>`;
 };
 
 export const Orders = () => {

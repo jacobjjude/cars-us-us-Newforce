@@ -24,7 +24,7 @@ export const Paint = () => {
 export const findPaint = (id) => {
 	for (const paint of paints) {
 		if (id === paint.id) {
-			return paint.color;
+			return paint;
 		}
 	}
 };
